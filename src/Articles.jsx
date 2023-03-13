@@ -7,22 +7,22 @@ function Articles() {
     getArticles().then((articleData) => {
       setArticles(articleData);
     });
-  });
-  console.log(articles);
+  }, []);
   return (
     <section>
-      <ul>
+      <ul className="articleList">
         {articles.map((article) => {
           return (
-            <li key={article.article_id}>
+            <li className="li" key={article.article_id}>
               <h2>
                 <p> {article.title}</p>
               </h2>
               <p>by {article.author}</p>
 
               <img
-                src={`${article.article_img_url}`}
-                alt={` ${article.topic}`}
+                className="articleImage"
+                src={article.article_img_url}
+                alt="related to topic of article "
               ></img>
             </li>
           );
