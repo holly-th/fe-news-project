@@ -2,7 +2,7 @@
   text-align: center;
 }
 
-.articleImage {
+.articleImages {
   object-fit: fill;
   width: 100%;
 }
@@ -12,4 +12,8 @@
 }
 .articleList {
   padding-left: 0px;
+}
+
+.articleImage {
+  width: 100%;
 }
