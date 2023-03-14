@@ -7,33 +7,30 @@ function ArticleCard() {
   const { article_id } = useParams();
   const [article, setArticle] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [voteCount, setVoteCount] = useState(null);
+  const [voteCount, setVoteCount] = useState(0);
 
   useEffect(() => {
     setIsLoading(true);
     getArticleById(article_id).then((articleData) => {
       setArticle(articleData);
+      setVoteCount(articleData.votes);
       setIsLoading(false);
     });
   }, [article_id]);
 
-  // useEffect(() => {
-  //   patchVotes(article_id).then((votes) => {
-  //     setVoteCount(votes);
-  //   });
-  // }, [article_id]);
-
   const increment = () => {
     article.votes = voteCount;
-    patchVotes(article_id).then((votes) => {
-      setVoteCount((currentCount) => currentCount + 1);
+    setVoteCount((currentCount) => currentCount + 1);
+    patchVotes(article_id, 1).catch(() => {
+      setVoteCount((currentCount) => currentCount - 1);
     });
   };
   const decrement = () => {
     if (voteCount >= 1) {
       article.votes = voteCount;
-      patchVotes(article_id).then(() => {
-        setVoteCount((currentCount) => currentCount - 1);
+      setVoteCount((currentCount) => currentCount - 1);
+      patchVotes(article_id, -1).catch(() => {
+        setVoteCount((currentCount) => currentCount + 1);
       });
     }
   };

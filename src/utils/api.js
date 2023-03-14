@@ -22,9 +22,9 @@ export function getComments(article_id) {
       return data.comments;
     });
 }
-export function patchVotes(article_id) {
+export function patchVotes(article_id, voteChange) {
   return newsApi
-    .patch(`/api/articles/${article_id}`, { inc_votes: 1 })
+    .patch(`/api/articles/${article_id}`, { inc_votes: voteChange })
     .then(({ data }) => {
       return data.changedArticle[0].votes;
     });
