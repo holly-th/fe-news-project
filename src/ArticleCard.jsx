@@ -15,7 +15,7 @@ function ArticleCard() {
   return (
     <li>
       <h3>{article.title}</h3>
-      <h4>{article.topic}</h4>
+      <h4>Topic: {article.topic}</h4>
       <img
         className="articleImage"
         src={article.article_img_url}
