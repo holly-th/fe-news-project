@@ -5,13 +5,24 @@ import { getArticleById } from "./utils/api";
 function ArticleCard() {
   const { article_id } = useParams();
   const [article, setArticle] = useState([]);
-
+  const [voteCount, setVoteCount] = useState(0);
   useEffect(() => {
     getArticleById(article_id).then((articleData) => {
       setArticle(articleData);
     });
   }, [article_id]);
-  console.log(article);
+
+  const increment = () => {
+    article.votes = voteCount;
+
+    return setVoteCount(voteCount + 1);
+  };
+  const decrement = () => {
+    if (voteCount >= 1) {
+      article.votes = voteCount;
+      return setVoteCount(voteCount - 1);
+    }
+  };
   return (
     <li>
       <h3>{article.title}</h3>
@@ -24,7 +35,9 @@ function ArticleCard() {
       <p>{article.body}</p>
       <p>By {article.author}</p>
       <p>Posted on: {article.created_at}</p>
-      <p>Votes: {article.votes}</p>
+      <p>Votes: {voteCount}</p>
+      <button onClick={increment}>Upvote 👍</button>
+      <button onClick={decrement}>Downvote👎</button>
     </li>
   );
 }
