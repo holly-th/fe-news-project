@@ -22,3 +22,14 @@ export function getComments(article_id) {
       return data.comments;
     });
 }
+
+export function postComment(article_id) {
+  return newsApi
+    .post(`/api/articles${article_id}/comments`, {
+      username: "grumpy19",
+      body: "I love cooking and trying new food",
+    })
+    .then(({ data }) => {
+      console.log(data);
+    });
+}

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getArticleById } from "./utils/api";
 import Comments from "./Comments";
+import AddComment from "./AddComment";
 
 function ArticleCard() {
   const { article_id } = useParams();
@@ -30,6 +31,7 @@ function ArticleCard() {
       <p>By {article.author}</p>
       <p>Posted on: {article.created_at}</p>
       <p>Votes: {article.votes}</p>
+      <AddComment article_id={article.article_id} />
       <Comments article_id={article.article_id} />
     </li>
   );
