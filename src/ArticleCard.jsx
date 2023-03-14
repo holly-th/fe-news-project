@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getArticleById } from "./utils/api";
+import { getArticleById, patchVotes } from "./utils/api";
 import Comments from "./Comments";
 
 function ArticleCard() {
   const { article_id } = useParams();
   const [article, setArticle] = useState([]);
-  const [voteCount, setVoteCount] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
+  const [voteCount, setVoteCount] = useState(null);
 
   useEffect(() => {
     setIsLoading(true);
@@ -17,15 +17,20 @@ function ArticleCard() {
     });
   }, [article_id]);
 
+  useEffect(() => {
+    patchVotes(article_id).then((votes) => {
+      setVoteCount(votes);
+    });
+  }, [article_id]);
+
   const increment = () => {
     article.votes = voteCount;
-
-    return setVoteCount(voteCount + 1);
+    return setVoteCount((currentCount) => currentCount + 1);
   };
   const decrement = () => {
     if (voteCount >= 1) {
       article.votes = voteCount;
-      return setVoteCount(voteCount - 1);
+      return setVoteCount((currentCount) => currentCount - 1);
     }
   };
   return isLoading ? (
