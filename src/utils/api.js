@@ -13,3 +13,12 @@ export function getArticles() {
       console.log(err);
     });
 }
+
+export function getComments(article_id) {
+  return newsApi
+    .get(`/api/articles/${article_id}/comments`)
+    .then(({ data }) => {
+      console.log(data.results);
+      return data.results;
+    });
+}

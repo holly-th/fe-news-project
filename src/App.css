@@ -1,5 +1,11 @@
 .App {
   text-align: center;
+  color: #edeeef;
+  background-color: #181519;
+}
+* {
+  color: #edeeef;
+  background-color: #181519;
 }
 
 .articleImage {
@@ -12,4 +18,52 @@
 }
 .articleList {
   padding-left: 0px;
+  border-top: 2px solid black;
+}
+
+.header {
+  margin-bottom: 0px;
+}
+
+.fullHeader {
+}
+.starterImage {
+  object-fit: fill;
+  border: 5px solid rgb(119, 38, 38);
+  border-radius: 20%;
+  width: 100%;
+}
+.topicsButton {
+  background-color: #1a3221;
+  color: #edeeef;
+  padding: 10px;
+  border: 2px solid black;
+  border-radius: 15%;
+  margin-right: 150px;
+  margin-left: 150px;
+}
+.usersButton {
+  background-color: #1a3221;
+  color: #edeeef;
+  padding: 10px;
+  border: 2px solid black;
+  border-radius: 15%;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+.homeButton {
+  background-color: #1a3221;
+  color: #edeeef;
+  padding: 10px;
+  border: 2px solid black;
+  border-radius: 15%;
+  padding: 10px;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.nav {
+  border: 2px solid black;
+  background-color: #636662;
+  padding: 5px;
 }
