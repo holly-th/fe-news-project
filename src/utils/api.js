@@ -4,21 +4,21 @@ const newsApi = axios.create({
 });
 
 export function getArticles() {
-  return newsApi
-    .get("/api/articles")
-    .then((articles) => {
-      return articles.data.results;
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+  return newsApi.get("/api/articles").then((articles) => {
+    return articles.data.results;
+  });
+}
+
+export function getArticleById(article_id) {
+  return newsApi.get(`/api/articles/${article_id}`).then((article) => {
+    return article.data.article[0];
+  });
 }
 
 export function getComments(article_id) {
   return newsApi
     .get(`/api/articles/${article_id}/comments`)
     .then(({ data }) => {
-      console.log(data.results);
-      return data.results;
+      return data.comments;
     });
 }

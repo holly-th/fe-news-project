@@ -17,7 +17,7 @@ function Nav() {
             setTopicValue(event.target.value);
           }}
         >
-          <Topic topic={topicValue} />;{console.log(topicValue)};
+          <Topic topic={topicValue} />;
           <option disabled value="">
             Topics
           </option>
