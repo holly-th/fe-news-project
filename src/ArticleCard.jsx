@@ -1,18 +1,23 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getArticleById } from "./utils/api";
+import Comments from "./Comments";
 
 function ArticleCard() {
   const { article_id } = useParams();
   const [article, setArticle] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    setIsLoading(true);
     getArticleById(article_id).then((articleData) => {
       setArticle(articleData);
+      setIsLoading(false);
     });
   }, [article_id]);
-  console.log(article);
-  return (
+  return isLoading ? (
+    <p>Loading Articles...</p>
+  ) : (
     <li>
       <h3>{article.title}</h3>
       <h4>Topic: {article.topic}</h4>
@@ -25,6 +30,7 @@ function ArticleCard() {
       <p>By {article.author}</p>
       <p>Posted on: {article.created_at}</p>
       <p>Votes: {article.votes}</p>
+      <Comments article_id={article.article_id} />
     </li>
   );
 }
