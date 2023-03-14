@@ -17,20 +17,24 @@ function ArticleCard() {
     });
   }, [article_id]);
 
-  useEffect(() => {
-    patchVotes(article_id).then((votes) => {
-      setVoteCount(votes);
-    });
-  }, [article_id]);
+  // useEffect(() => {
+  //   patchVotes(article_id).then((votes) => {
+  //     setVoteCount(votes);
+  //   });
+  // }, [article_id]);
 
   const increment = () => {
     article.votes = voteCount;
-    return setVoteCount((currentCount) => currentCount + 1);
+    patchVotes(article_id).then((votes) => {
+      setVoteCount((currentCount) => currentCount + 1);
+    });
   };
   const decrement = () => {
     if (voteCount >= 1) {
       article.votes = voteCount;
-      return setVoteCount((currentCount) => currentCount - 1);
+      patchVotes(article_id).then(() => {
+        setVoteCount((currentCount) => currentCount - 1);
+      });
     }
   };
   return isLoading ? (
