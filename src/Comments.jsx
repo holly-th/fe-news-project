@@ -15,7 +15,7 @@ function Comments({ article_id }) {
       <h3>Comments</h3>
       {comments.map((comment) => {
         return (
-          <li>
+          <li key={comment.comment_id}>
             <p>{comment.author} commented:</p>
             <p>{comment.body}</p>
             <p> on {comment.created_at}</p>

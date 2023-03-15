@@ -23,13 +23,14 @@ export function getComments(article_id) {
     });
 }
 
-export function postComment(article_id) {
+export function postComment(article_id, username, body) {
   return newsApi
-    .post(`/api/articles${article_id}/comments`, {
-      username: "grumpy19",
-      body: "I love cooking and trying new food",
+    .post(`/api/articles/${article_id}/comments`, {
+      username: username,
+      body: body,
     })
     .then(({ data }) => {
-      console.log(data);
+      console.log(data.newComment);
+      return data;
     });
 }

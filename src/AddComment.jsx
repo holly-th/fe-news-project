@@ -1,4 +1,16 @@
+import { useEffect } from "react";
+import { postComment } from "./utils/api";
+
 export function AddComment({ article_id }) {
+  useEffect(() => {
+    postComment(
+      article_id,
+      "grumpy19",
+      "I love cooking and trying new food"
+    ).then((data) => {
+      console.log(data);
+    });
+  });
   return (
     <form>
       <label>
@@ -10,6 +22,9 @@ export function AddComment({ article_id }) {
         Comment
         <textarea></textarea>
       </label>
+      <button className="postCommentButton" type="submit">
+        Post comment
+      </button>
     </form>
   );
 }
