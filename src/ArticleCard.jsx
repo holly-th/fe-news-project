@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getArticleById, patchVotes } from "./utils/api";
 import Comments from "./Comments";
-import AddComment from "./AddComment";
 
 function ArticleCard() {
   const { article_id } = useParams();
@@ -31,6 +30,7 @@ function ArticleCard() {
       article.votes = voteCount;
       setVoteCount((currentCount) => currentCount - 1);
       patchVotes(article_id, -1).catch(() => {
+        <p className="errorMessage">Vote not added. Server down</p>;
         setVoteCount((currentCount) => currentCount + 1);
       });
     }
@@ -50,10 +50,9 @@ function ArticleCard() {
       <p>By {article.author}</p>
       <p>Posted on: {article.created_at}</p>
       <p>Votes: {article.votes}</p>
-      <AddComment article_id={article.article_id} />
       <p>Votes: {voteCount}</p>
       <button onClick={increment}>Upvote 👍</button>
-      <button onClick={decrement}>Downvote👎</button>
+      <button onClick={decrement}>Downvote 👎</button>
 
       <Comments article_id={article.article_id} />
     </li>

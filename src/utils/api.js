@@ -22,18 +22,6 @@ export function getComments(article_id) {
       return data.comments;
     });
 }
-
-export function postComment(article_id, username, body) {
-  return newsApi
-    .post(`/api/articles/${article_id}/comments`, {
-      username: username,
-      body: body,
-    })
-    .then(({ data }) => {
-      console.log(data.newComment);
-      return data;
-    });
-}
 export function patchVotes(article_id, voteChange) {
   return newsApi
     .patch(`/api/articles/${article_id}`, { inc_votes: voteChange })
@@ -46,4 +34,15 @@ export function getTopics() {
   return newsApi.get("/api/topics").then(({ data }) => {
     return data;
   });
+}
+
+export function postComment(article_id, username, body) {
+  return newsApi
+    .post(`/api/articles/${article_id}/comments`, {
+      username: username,
+      body: body,
+    })
+    .then(({ data }) => {
+      return data.newComment;
+    });
 }
