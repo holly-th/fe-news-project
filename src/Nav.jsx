@@ -1,30 +1,19 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
-import Topic from "./Topic";
+import Topics from "./Topics";
 
 function Nav() {
-  const [topicValue, setTopicValue] = useState("");
   return (
     <section>
       <nav className="nav">
         <Link to={"/"}>
           <button className="homeButton">Home</button>
         </Link>
-        <select
-          className="topicsButton"
-          value={topicValue}
-          onChange={(event) => {
-            setTopicValue(event.target.value);
-          }}
-        >
-          <Topic topic={topicValue} />;
-          <option disabled value="">
+
+        <Link to={"/topics"}>
+          <button onClick={<Topics />} className="topicsButton">
             Topics
-          </option>
-          <option value="football">Football</option>
-          <option value="cooking">Cooking</option>
-          <option value="coding">Coding</option>
-        </select>
+          </button>
+        </Link>
 
         <Link to={"/users"}>
           <button className="usersButton">Users</button>
