@@ -3,10 +3,16 @@ const newsApi = axios.create({
   baseURL: "https://backend-news-project-drc2.onrender.com",
 });
 
-export function getArticles() {
-  return newsApi.get("/api/articles").then((articles) => {
-    return articles.data.results;
-  });
+export function getArticles(topic) {
+  return newsApi
+    .get("/api/articles", {
+      params: {
+        topic: topic,
+      },
+    })
+    .then((articles) => {
+      return articles.data.results;
+    });
 }
 
 export function getArticleById(article_id) {

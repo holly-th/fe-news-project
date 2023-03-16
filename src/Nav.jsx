@@ -1,22 +1,19 @@
 import { Link } from "react-router-dom";
-import Topics from "./Topics";
 
 function Nav() {
   return (
     <section>
       <nav className="nav">
-        <Link to={"/"}>
-          <button className="homeButton">Home</button>
+        <Link className="homeButton" to={"/"}>
+          Home
         </Link>
 
-        <Link to={"/topics"}>
-          <button onClick={<Topics />} className="topicsButton">
-            Topics
-          </button>
+        <Link className="topicsButton" to={"/topics"}>
+          Topics
         </Link>
 
-        <Link to={"/users"}>
-          <button className="usersButton">Users</button>
+        <Link className="usersButton" to={"/users"}>
+          Users
         </Link>
       </nav>
       <p className="welcomeMessage">Welcome to NC news!</p>
