@@ -22,6 +22,7 @@ function Articles() {
     <section>
       orderby:
       <Link to={"?orderby=asc"}>Ascending</Link>
+      <Link to={"/"}>Descending</Link>
       Sort by:
       <Link to={"/articles?sortby=author"}>Author</Link>
       <Link to={"/articles?sortby=topic"}>Topic</Link>
