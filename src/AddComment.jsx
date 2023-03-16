@@ -4,13 +4,14 @@ import { postComment } from "./utils/api";
 export function AddComment({ setComments, article_id }) {
   const [username, setUsername] = useState("");
   const [body, setBody] = useState("");
+  const [disabled, setDisabled] = useState(false);
 
   function handleSubmit(event) {
     event.preventDefault();
+    setDisabled(true);
 
     postComment(article_id, username, body)
       .then((newComment) => {
-        console.log(newComment);
         setComments((currentComments) => [newComment[0], ...currentComments]);
       })
       .catch(() => {
@@ -22,6 +23,7 @@ export function AddComment({ setComments, article_id }) {
 
   return (
     <form>
+      <p>Comments can only be posted once! 😊 </p>;
       <label>
         Username:
         <input
@@ -31,7 +33,6 @@ export function AddComment({ setComments, article_id }) {
           }}
         ></input>
       </label>
-
       <label>
         Comment
         <textarea
@@ -44,6 +45,7 @@ export function AddComment({ setComments, article_id }) {
       <button
         className="postCommentButton"
         type="submit"
+        disabled={disabled}
         onClick={handleSubmit}
       >
         Post comment

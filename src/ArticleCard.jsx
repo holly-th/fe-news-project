@@ -49,7 +49,6 @@ function ArticleCard() {
       <p>{article.body}</p>
       <p>By {article.author}</p>
       <p>Posted on: {article.created_at}</p>
-      <p>Votes: {article.votes}</p>
       <p>Votes: {voteCount}</p>
       <button onClick={increment}>Upvote 👍</button>
       <button onClick={decrement}>Downvote 👎</button>
