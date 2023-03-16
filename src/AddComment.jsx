@@ -28,23 +28,23 @@ export function AddComment({ setComments, article_id }) {
   return error ? (
     <ErrorMessages error={error} />
   ) : (
-    <form>
-      <p>Comments can only be posted once! 😊 </p>
-      <label>
+    <form className="addCommentForm">
+      <p>Add a comment! 😊 </p>
+      <label className="username">
         Username:
         <input
           value={username}
-          className="username"
+          className="usernameInput"
           onChange={(event) => {
             setUsername(event.target.value);
           }}
         ></input>
       </label>
-      <label>
+      <label className="commentBody">
         Comment
         <textarea
           value={body}
-          className="commentBody"
+          className="commentBodyInput"
           onChange={(event) => {
             setBody(event.target.value);
           }}
