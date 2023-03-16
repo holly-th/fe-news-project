@@ -8,6 +8,7 @@ function Articles() {
   const topic = searchParams.get("topic");
   const sortby = searchParams.get("sortby");
   const orderby = searchParams.get("orderby");
+
   useEffect(() => {
     setIsLoading(true);
     getArticles(topic, sortby, orderby).then((articleData) => {
@@ -22,8 +23,10 @@ function Articles() {
     <section>
       orderby:
       <Link to={"?orderby=asc"}>Ascending</Link>
+      {searchParams.set("orderby", "asc")}
       <Link to={"/"}>Descending</Link>
       Sort by:
+      {searchParams.set("sortby", "author")}
       <Link to={"/articles?sortby=author"}>Author</Link>
       <Link to={"/articles?sortby=topic"}>Topic</Link>
       <Link to={"/articles?sortby=created_at"}>Date</Link>
