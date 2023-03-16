@@ -7,6 +7,16 @@ function Comments({ article_id }) {
 
   useEffect(() => {
     getComments(article_id).then((results) => {
+      results.map((comment) => {
+        const readableDate = new Date(comment.created_at);
+        const date = readableDate.getDate();
+        const month = readableDate.getMonth();
+        const year = readableDate.getFullYear();
+        const hour = readableDate.getHours();
+        const min = readableDate.getMinutes();
+        return (comment.created_at = `${date}/${month}/${year} at ${hour}:${min}`);
+      });
+
       setComments(results);
     });
   }, [article_id]);

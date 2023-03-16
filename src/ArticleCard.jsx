@@ -12,8 +12,16 @@ function ArticleCard() {
   useEffect(() => {
     setIsLoading(true);
     getArticleById(article_id).then((articleData) => {
+      const readableDate = new Date(articleData.created_at);
+      const date = readableDate.getDate();
+      const month = readableDate.getMonth();
+      const year = readableDate.getFullYear();
+      const hour = readableDate.getHours();
+      const min = readableDate.getMinutes();
+      articleData.created_at = `${date}/${month}/${year} at ${hour}:${min}`;
       setArticle(articleData);
       setVoteCount(articleData.votes);
+
       setIsLoading(false);
     });
   }, [article_id]);
