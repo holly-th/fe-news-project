@@ -82,3 +82,49 @@
 .singleComment {
   border: #636662 solid 2px;
 }
+
+.username {
+  border: #636662 2px solid;
+  padding-right: 0px;
+  padding-left: 10px;
+  margin: 10px;
+  text-align: center;
+  border: #181519;
+}
+.commentBody {
+  border: #636662 2px solid;
+  padding-right: 0px;
+  padding-left: 10px;
+  margin: 10px;
+  text-align: center;
+  border: #181519;
+}
+.commentBodyInput {
+  background-color: #edeeef;
+  padding-right: 0px;
+  padding-bottom: 10px;
+  margin-top: 20px;
+  color: #181519;
+  border: #181519 1px solid;
+  border-radius: 10px;
+}
+.usernameInput {
+  background-color: #edeeef;
+  border: #181519 1px solid;
+  border-radius: 10px;
+}
+.postCommentButton {
+  background-color: #1a3221;
+  color: #edeeef;
+  padding: 10px;
+  border: 2px solid black;
+  border-radius: 15%;
+  padding-left: 30px;
+  padding-right: 30px;
+  margin: 20px;
+}
+.addCommentForm {
+  border: #636662 2px solid;
+  box-shadow: black 2px 2px 40px;
+  margin: 15px;
+}
