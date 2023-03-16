@@ -6,20 +6,29 @@ function Articles() {
   const [isLoading, setIsLoading] = useState(true);
   const [searchParams] = useSearchParams();
   const topic = searchParams.get("topic");
+  const sortby = searchParams.get("sortby");
+  const orderby = searchParams.get("orderby");
   useEffect(() => {
     setIsLoading(true);
-    getArticles(topic).then((articleData) => {
+    getArticles(topic, sortby, orderby).then((articleData) => {
       setArticles(articleData);
       setIsLoading(false);
     });
-  }, [topic]);
+  }, [topic, sortby, orderby]);
 
   return isLoading ? (
     <p>Loading Articles...</p>
   ) : (
     <section>
+      orderby:
+      <Link to={"?orderby=asc"}>Ascending</Link>
+      Sort by:
+      <Link to={"/articles?sortby=author"}>Author</Link>
+      <Link to={"/articles?sortby=topic"}>Topic</Link>
+      <Link to={"/articles?sortby=created_at"}>Date</Link>
+      <Link to={"/articles?sortby=votes"}>Votes</Link>
+      <Link to={"/articles?sortby=article_id"}>Article ID</Link>
       <p>Get started writing, reading and learning!</p>
-
       <img
         src="https://images.unsplash.com/photo-1617575521317-d2974f3b56d2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80"
         alt="shop window with whats your story message in lights "
