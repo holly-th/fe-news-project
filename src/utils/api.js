@@ -3,11 +3,13 @@ const newsApi = axios.create({
   baseURL: "https://backend-news-project-drc2.onrender.com",
 });
 
-export function getArticles(topic) {
+export function getArticles(topic, sortby, orderby) {
   return newsApi
     .get("/api/articles", {
       params: {
         topic: topic,
+        sortby: sortby,
+        orderby: orderby,
       },
     })
     .then((articles) => {

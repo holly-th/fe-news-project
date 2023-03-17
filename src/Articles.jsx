@@ -4,22 +4,93 @@ import { Link, useSearchParams } from "react-router-dom";
 function Articles() {
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [searchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   const topic = searchParams.get("topic");
+  const sortby = searchParams.get("sortby");
+  const orderby = searchParams.get("orderby");
+
+  function sortBy(query) {
+    const newParams = new URLSearchParams(searchParams);
+    newParams.set("sortby", query);
+    setSearchParams(newParams);
+  }
+  function orderBy(order) {
+    const newOrderBy = new URLSearchParams(searchParams);
+    newOrderBy.set("orderby", order);
+    setSearchParams(newOrderBy);
+  }
+
   useEffect(() => {
     setIsLoading(true);
-    getArticles(topic).then((articleData) => {
+    getArticles(topic, sortby, orderby).then((articleData) => {
       setArticles(articleData);
       setIsLoading(false);
     });
-  }, [topic]);
+  }, [topic, sortby, orderby]);
 
   return isLoading ? (
     <p>Loading Articles...</p>
   ) : (
     <section>
+      <p className="orderbyText">Order articles by:</p>
+      <button
+        className="ascButton"
+        onClick={() => {
+          orderBy("asc");
+        }}
+      >
+        Ascending
+      </button>
+      <button
+        className="descButton"
+        onClick={() => {
+          orderBy("desc");
+        }}
+      >
+        Descending
+      </button>
+      <p className="sortbyText">Sort articles by:</p>
+      <button
+        className="authorButton"
+        onClick={() => {
+          sortBy("author");
+        }}
+      >
+        Author
+      </button>
+      <button
+        className="topicButton"
+        onClick={() => {
+          sortBy("topic");
+        }}
+      >
+        Topic
+      </button>
+      <button
+        className="dateButton"
+        onClick={() => {
+          sortBy("created_at");
+        }}
+      >
+        Date
+      </button>
+      <button
+        className="votesButton"
+        onClick={() => {
+          sortBy("votes");
+        }}
+      >
+        Votes
+      </button>
+      <button
+        className="article_idButton"
+        onClick={() => {
+          sortBy("article_id");
+        }}
+      >
+        Article Id
+      </button>
       <p>Get started writing, reading and learning!</p>
-
       <img
         src="https://images.unsplash.com/photo-1617575521317-d2974f3b56d2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80"
         alt="shop window with whats your story message in lights "
