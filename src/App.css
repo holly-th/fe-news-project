@@ -245,3 +245,38 @@
   padding: 50px;
   list-style: none;
 }
+
+.upvote {
+  background-color: #1a3221;
+  color: #edeeef;
+  padding: 10px;
+  border: 2px solid black;
+  border-radius: 15%;
+  padding: 10px;
+  padding-left: 30px;
+  padding-right: 30px;
+  margin: 10px;
+  box-shadow: 2px 2px 5px black;
+}
+.downvote {
+  background-color: #1a3221;
+  color: #edeeef;
+  padding: 10px;
+  border: 2px solid black;
+  border-radius: 15%;
+  padding: 10px;
+  padding-left: 30px;
+  padding-right: 30px;
+  margin: 10px;
+  box-shadow: 2px 2px 5px black;
+}
+
+.user {
+  border: #000000 solid 2px;
+}
+.usersIntro {
+  border-top: #000000 2px solid;
+}
+.userpageImage {
+  width: 100%;
+}

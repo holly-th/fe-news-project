@@ -54,3 +54,9 @@ export function postComment(article_id, username, body) {
       return data.newComment;
     });
 }
+
+export function getUsers() {
+  return newsApi.get("/api/users").then(({ data }) => {
+    return data.users;
+  });
+}
