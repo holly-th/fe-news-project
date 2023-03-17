@@ -8,7 +8,6 @@ function Users() {
       setUsers(usersData);
     });
   }, []);
-  console.log(users);
   return users.map((user) => {
     return (
       <li className="user" key={user.username}>
