@@ -43,3 +43,14 @@ export function getTopics() {
     return data;
   });
 }
+
+export function postComment(article_id, username, body) {
+  return newsApi
+    .post(`/api/articles/${article_id}/comments`, {
+      username: username,
+      body: body,
+    })
+    .then(({ data }) => {
+      return data.newComment;
+    });
+}

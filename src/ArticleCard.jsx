@@ -12,8 +12,16 @@ function ArticleCard() {
   useEffect(() => {
     setIsLoading(true);
     getArticleById(article_id).then((articleData) => {
+      const readableDate = new Date(articleData.created_at);
+      const date = readableDate.getDate();
+      const month = readableDate.getMonth();
+      const year = readableDate.getFullYear();
+      const hour = readableDate.getHours();
+      const min = readableDate.getMinutes();
+      articleData.created_at = `${date}/${month}/${year} at ${hour}:${min}`;
       setArticle(articleData);
       setVoteCount(articleData.votes);
+
       setIsLoading(false);
     });
   }, [article_id]);
@@ -30,6 +38,7 @@ function ArticleCard() {
       article.votes = voteCount;
       setVoteCount((currentCount) => currentCount - 1);
       patchVotes(article_id, -1).catch(() => {
+        <p className="errorMessage">Vote not added. Server down</p>;
         setVoteCount((currentCount) => currentCount + 1);
       });
     }
@@ -50,7 +59,7 @@ function ArticleCard() {
       <p>Posted on: {article.created_at}</p>
       <p>Votes: {voteCount}</p>
       <button onClick={increment}>Upvote 👍</button>
-      <button onClick={decrement}>Downvote👎</button>
+      <button onClick={decrement}>Downvote 👎</button>
 
       <Comments article_id={article.article_id} />
     </li>
