@@ -1,9 +1,10 @@
-function ErrorMessages({ error, err }) {
-  if (err) {
-    return <p>Server down</p>;
-  }
-  if (error === true) {
-    return <p>You can't post an empty comment please refresh and try again </p>;
-  }
+function ErrorMessages({ err }) {
+  return (
+    <section>
+      <h2>{err.status}</h2>
+
+      <h3>Route {err.data.message}</h3>
+    </section>
+  );
 }
 export default ErrorMessages;
