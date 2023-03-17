@@ -1,5 +1,4 @@
 import { useState } from "react";
-import ErrorMessages from "./ErrorMessages";
 import { postComment } from "./utils/api";
 
 export function AddComment({ setComments, article_id }) {
@@ -26,7 +25,7 @@ export function AddComment({ setComments, article_id }) {
   }
 
   return error ? (
-    <ErrorMessages error={error} />
+    <p>You cant post an empty comment please refresh and try again </p>
   ) : (
     <form className="addCommentForm">
       <p>Add a comment! 😊 </p>
@@ -48,6 +47,7 @@ export function AddComment({ setComments, article_id }) {
           onChange={(event) => {
             setBody(event.target.value);
           }}
+          required
         ></textarea>
       </label>
       <button

@@ -238,6 +238,13 @@
   box-shadow: black 2px 2px 40px;
   margin: 15px;
 }
+.topicLink {
+  border: #636662 2px solid;
+  box-shadow: black 2px 2px 40px;
+  margin: 15px;
+  padding: 50px;
+  list-style: none;
+}
 
 .upvote {
   background-color: #1a3221;

@@ -1,6 +1,10 @@
-function ErrorMessages({ error }) {
-  if (error === true) {
-    return <p>Something went wrong please refresh and try again </p>;
-  }
+function ErrorMessages({ err }) {
+  return (
+    <section>
+      <h2>{err.status}</h2>
+
+      <h3>Route {err.data.message}</h3>
+    </section>
+  );
 }
 export default ErrorMessages;
