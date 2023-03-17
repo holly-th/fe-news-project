@@ -32,8 +32,9 @@ function Articles() {
     <p>Loading Articles...</p>
   ) : (
     <section>
-      orderby:
+      <p className="orderbyText">Order articles by:</p>
       <button
+        className="ascButton"
         onClick={() => {
           orderBy("asc");
         }}
@@ -41,14 +42,16 @@ function Articles() {
         Ascending
       </button>
       <button
+        className="descButton"
         onClick={() => {
           orderBy("desc");
         }}
       >
         Descending
       </button>
-      Sort by:
+      <p className="sortbyText">Sort articles by:</p>
       <button
+        className="authorButton"
         onClick={() => {
           sortBy("author");
         }}
@@ -56,6 +59,7 @@ function Articles() {
         Author
       </button>
       <button
+        className="topicButton"
         onClick={() => {
           sortBy("topic");
         }}
@@ -63,6 +67,7 @@ function Articles() {
         Topic
       </button>
       <button
+        className="dateButton"
         onClick={() => {
           sortBy("created_at");
         }}
@@ -70,6 +75,7 @@ function Articles() {
         Date
       </button>
       <button
+        className="votesButton"
         onClick={() => {
           sortBy("votes");
         }}
@@ -77,6 +83,7 @@ function Articles() {
         Votes
       </button>
       <button
+        className="article_idButton"
         onClick={() => {
           sortBy("article_id");
         }}
