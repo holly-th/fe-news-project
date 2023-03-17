@@ -58,8 +58,12 @@ function ArticleCard() {
       <p>By {article.author}</p>
       <p>Posted on: {article.created_at}</p>
       <p>Votes: {voteCount}</p>
-      <button onClick={increment}>Upvote 👍</button>
-      <button onClick={decrement}>Downvote 👎</button>
+      <button className="upvote" onClick={increment}>
+        Upvote 👍
+      </button>
+      <button className="downvote" onClick={decrement}>
+        Downvote 👎
+      </button>
 
       <Comments article_id={article.article_id} />
     </li>
