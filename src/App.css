@@ -280,6 +280,7 @@
 .userpageImage {
   height: 200px;
   object-fit: fill;
-
   width: 200px;
+  border: #000000 2px solid;
+  border-radius: 50%;
 }
