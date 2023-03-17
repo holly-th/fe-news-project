@@ -276,6 +276,7 @@
 }
 .usersIntro {
   border-top: #000000 2px solid;
+  padding-top: 10px;
 }
 .userpageImage {
   height: 200px;
