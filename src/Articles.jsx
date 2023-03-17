@@ -4,10 +4,21 @@ import { Link, useSearchParams } from "react-router-dom";
 function Articles() {
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [searchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   const topic = searchParams.get("topic");
   const sortby = searchParams.get("sortby");
   const orderby = searchParams.get("orderby");
+
+  function sortBy(query) {
+    const newParams = new URLSearchParams(searchParams);
+    newParams.set("sortby", query);
+    setSearchParams(newParams);
+  }
+  function orderBy(order) {
+    const newOrderBy = new URLSearchParams(searchParams);
+    newOrderBy.set("orderby", order);
+    setSearchParams(newOrderBy);
+  }
 
   useEffect(() => {
     setIsLoading(true);
@@ -22,16 +33,56 @@ function Articles() {
   ) : (
     <section>
       orderby:
-      <Link to={"?orderby=asc"}>Ascending</Link>
-      {searchParams.set("orderby", "asc")}
-      <Link to={"/"}>Descending</Link>
+      <button
+        onClick={() => {
+          orderBy("asc");
+        }}
+      >
+        Ascending
+      </button>
+      <button
+        onClick={() => {
+          orderBy("desc");
+        }}
+      >
+        Descending
+      </button>
       Sort by:
-      {searchParams.set("sortby", "author")}
-      <Link to={"/articles?sortby=author"}>Author</Link>
-      <Link to={"/articles?sortby=topic"}>Topic</Link>
-      <Link to={"/articles?sortby=created_at"}>Date</Link>
-      <Link to={"/articles?sortby=votes"}>Votes</Link>
-      <Link to={"/articles?sortby=article_id"}>Article ID</Link>
+      <button
+        onClick={() => {
+          sortBy("author");
+        }}
+      >
+        Author
+      </button>
+      <button
+        onClick={() => {
+          sortBy("topic");
+        }}
+      >
+        Topic
+      </button>
+      <button
+        onClick={() => {
+          sortBy("created_at");
+        }}
+      >
+        Date
+      </button>
+      <button
+        onClick={() => {
+          sortBy("votes");
+        }}
+      >
+        Votes
+      </button>
+      <button
+        onClick={() => {
+          sortBy("article_id");
+        }}
+      >
+        Article Id
+      </button>
       <p>Get started writing, reading and learning!</p>
       <img
         src="https://images.unsplash.com/photo-1617575521317-d2974f3b56d2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80"
