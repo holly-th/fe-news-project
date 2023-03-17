@@ -278,5 +278,8 @@
   border-top: #000000 2px solid;
 }
 .userpageImage {
+  object-fit: fill;
   width: 100%;
+  width: 400px;
+  height: 200px;
 }
