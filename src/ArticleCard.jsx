@@ -2,12 +2,12 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getArticleById, patchVotes } from "./utils/api";
 import Comments from "./Comments";
-
 function ArticleCard() {
   const { article_id } = useParams();
   const [article, setArticle] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [voteCount, setVoteCount] = useState(0);
+  const [err, setErr] = useState(null);
 
   useEffect(() => {
     setIsLoading(true);
@@ -29,20 +29,24 @@ function ArticleCard() {
   const increment = () => {
     article.votes = voteCount;
     setVoteCount((currentCount) => currentCount + 1);
-    patchVotes(article_id, 1).catch(() => {
+    patchVotes(article_id, 1).catch((error) => {
       setVoteCount((currentCount) => currentCount - 1);
+      setErr({ error });
     });
   };
   const decrement = () => {
     if (voteCount >= 1) {
       article.votes = voteCount;
       setVoteCount((currentCount) => currentCount - 1);
-      patchVotes(article_id, -1).catch(() => {
-        <p className="errorMessage">Vote not added. Server down</p>;
+      patchVotes(article_id, -1).catch((error) => {
         setVoteCount((currentCount) => currentCount + 1);
+        setErr({ error });
       });
     }
   };
+  if (err) {
+    return <p>Server down! Please refresh and try again!</p>;
+  }
   return isLoading ? (
     <p>Loading Articles...</p>
   ) : (
